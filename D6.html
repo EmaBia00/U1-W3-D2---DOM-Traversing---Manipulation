@@ -84,10 +84,10 @@
   */
 
     const h1 = document.querySelector("h1");
-    const changeTitle = function () {
-      h1.innerText = "EPICODE TITLE";
+    const changeTitle = function (title) {
+      h1.innerText = title;
     }
-    changeTitle();
+    changeTitle("Titolo");
 
     /* ESERCIZIO 2
      Scrivi una funzione per aggiungere al titolo della pagina una classe "myHeading"
@@ -102,66 +102,60 @@
      Scrivi una funzione che cambi il testo dei p figli di un div
     */
 
-    //Seleziono tutti i div
-    const divs = document.querySelectorAll("div");
-    const changePcontent = function () {
+    const changePcontent = function (text) {
+      const paragraphs = document.querySelectorAll("div p");
 
-      //Ciclo tutti i div e all'interno mi trovo tutte le "p" contenute nei "div"
-      divs.forEach(div => {
-        const paragraphs = div.querySelectorAll("p");
-
-        //Ciclo anche le "p" in modo da cambiare tutti i contenuti dei testi delle "p" figlie di "div"
-        paragraphs.forEach(paragraph =>
-          paragraph.innerText = "Testo molto corto di prova")
-      })
+      //Ciclo anche le "p" in modo da cambiare tutti i contenuti dei testi delle "p" figlie di "div"
+      paragraphs.forEach(p =>
+        p.innerText = text)
     }
-    changePcontent();
+    changePcontent("Testo molto corto di prova");
     /* ESERCIZIO 4
      Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
     */
     //Seleziono tutte le ancore "a" escludendo quella presente dentro al footer, utilizzando "a:not(footer a)"
-    const links = document.querySelectorAll("a:not(footer a)");
-    const changeUrls = function () {
 
+    const changeUrls = function (link) {
+      const links = document.querySelectorAll("a:not(footer a)");
       //Ciclo tutte le ancore trovate, nel caso fossero più di una, e cambio il contenuto di "href"
-      links.forEach(link => {
-        link.href = "https://www.google.com";
+      links.forEach(a => {
+        a.href = link;
       });
     }
-    changeUrls();
+    changeUrls("https://www.google.com");
 
     /* ESERCIZIO 5
      Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
   */
 
-    const addToTheSecond = function () {
+    const addToTheSecond = function (text) {
       //Seleziono la seconda lista utilizzando "ul:nth-of-type(2)" --> permette di specificare in base a una lista di tipi uguali quale scegliere.
       const secondList = document.querySelector("ul:nth-of-type(2)");
 
       //Creazione di un nuovo elemento "li" con il suo contenuto
-      const element = document.createElement("li");
-      element.innerText = "4rd element";
+      const li = document.createElement("li");
+      li.innerText = text;
 
       //Aggiunta del nuovo elemento alla seconda lista
-      secondList.appendChild(element);
+      secondList.appendChild(li);
     }
-    addToTheSecond()
+    addToTheSecond("4th element")
     /* ESERCIZIO 6
      Scrivi una funzione che aggiunga un paragrafo al primo div
   */
 
-    const addParagraph = function () {
+    const addParagraph = function (text) {
       //Seleziono primo div = uso querySelector perchè prende il primo valore trovato
       const firstDiv = document.querySelector("div");
 
       //Creazione di un nuovo elemento "P" con il suo contenuto
       const newParagraph = document.createElement("p");
-      newParagraph.innerText = "Questo è un nuovo paragarafo aggiunto nel primo div";
+      newParagraph.innerText = text;
 
       //Aggiunta del nuovo paragrafo al primo div
       firstDiv.appendChild(newParagraph)
     }
-    addParagraph()
+    addParagraph("Questo è un nuovo paragarafo aggiunto nel primo div")
 
     /* ESERCIZIO 7
      Scrivi una funzione che faccia scomparire la prima lista non ordinata
@@ -185,7 +179,7 @@
      Scrivi una funzione che renda verde il background di ogni lista non ordinata
     */
 
-    const paintItGreen = function () {
+    const paintItGreen = function (bgColor) {
 
       //Seleziono tutte le liste non ordinate
       const lists = document.querySelectorAll("ul");
@@ -194,10 +188,10 @@
       lists.forEach(list => {
 
         //Cambio il colore al background
-        list.style.backgroundColor = "green";
+        list.style.backgroundColor = bgColor;
       })
     }
-    paintItGreen()
+    paintItGreen("green")
     /* ESERCIZIO 9
      Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
     */
@@ -228,12 +222,13 @@
       footer.onclick = function () {
 
         //Seleziono il link contenuto nel footer
-        const linkFooter = document.querySelector("a");
+        const linkFooter = footer.querySelector("a");
 
         //Mostro attraverso un alert l'URL contenuto nel link
         alert(linkFooter.href);
       }
     }
+    revealFooterLink()
 
     /* ESERCIZIO 11
      Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
