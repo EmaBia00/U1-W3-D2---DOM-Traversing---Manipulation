@@ -101,10 +101,16 @@
     /* ESERCIZIO 3
      Scrivi una funzione che cambi il testo dei p figli di un div
     */
+
+    //Seleziono tutti i div
     const divs = document.querySelectorAll("div");
     const changePcontent = function () {
+
+      //Ciclo tutti i div e all'interno mi trovo tutte le "p" contenute nei "div"
       divs.forEach(div => {
         const paragraphs = div.querySelectorAll("p");
+
+        //Ciclo anche le "p" in modo da cambiare tutti i contenuti dei testi delle "p" figlie di "div"
         paragraphs.forEach(paragraph =>
           paragraph.innerText = "Testo molto corto di prova")
       })
@@ -113,39 +119,101 @@
     /* ESERCIZIO 4
      Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
     */
+    //Seleziono tutte le ancore "a" escludendo quella presente dentro al footer, utilizzando "a:not(footer a)"
+    const links = document.querySelectorAll("a:not(footer a)");
+    const changeUrls = function () {
 
-    const changeUrls = function () { }
+      //Ciclo tutte le ancore trovate, nel caso fossero più di una, e cambio il contenuto di "href"
+      links.forEach(link => {
+        link.href = "https://www.google.com";
+      });
+    }
+    changeUrls();
 
     /* ESERCIZIO 5
      Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
   */
 
-    const addToTheSecond = function () { }
+    const addToTheSecond = function () {
+      //Seleziono la seconda lista utilizzando "ul:nth-of-type(2)" --> permette di specificare in base a una lista di tipi uguali quale scegliere.
+      const secondList = document.querySelector("ul:nth-of-type(2)");
 
+      //Creazione di un nuovo elemento "li" con il suo contenuto
+      const element = document.createElement("li");
+      element.innerText = "4rd element";
+
+      //Aggiunta del nuovo elemento alla seconda lista
+      secondList.appendChild(element);
+    }
+    addToTheSecond()
     /* ESERCIZIO 6
      Scrivi una funzione che aggiunga un paragrafo al primo div
   */
 
-    const addParagraph = function () { }
+    const addParagraph = function () {
+      //Seleziono primo div = uso querySelector perchè prende il primo valore trovato
+      const firstDiv = document.querySelector("div");
+
+      //Creazione di un nuovo elemento "P" con il suo contenuto
+      const newParagraph = document.createElement("p");
+      newParagraph.innerText = "Questo è un nuovo paragarafo aggiunto nel primo div";
+
+      //Aggiunta del nuovo paragrafo al primo div
+      firstDiv.appendChild(newParagraph)
+    }
+    addParagraph()
 
     /* ESERCIZIO 7
      Scrivi una funzione che faccia scomparire la prima lista non ordinata
   */
 
-    const hideFirstUl = function () { }
+    const hideFirstUl = function () {
+
+      //Seleziono la prima lista non ordinata
+      const firstList = document.querySelector("ul");
+
+      //Metodo nel quale viene eseguita una funzione dopo che l'utente esegue l'azione di "onlick"
+      firstList.onclick = function () {
+
+        //Rimuove definitivamente la lista
+        firstList.remove()
+      }
+    }
+    hideFirstUl();
 
     /* ESERCIZIO 8 
      Scrivi una funzione che renda verde il background di ogni lista non ordinata
     */
 
-    const paintItGreen = function () { }
+    const paintItGreen = function () {
 
+      //Seleziono tutte le liste non ordinate
+      const lists = document.querySelectorAll("ul");
+
+      //Ciclo e prendo singolarmente ogni lista tramite un forEach, altrimenti non è possibile usare il metodo Style sulla variabile "lists" (siccome è un gruppo di liste e non singola)
+      lists.forEach(list => {
+
+        //Cambio il colore al background
+        list.style.backgroundColor = "green";
+      })
+    }
+    paintItGreen()
     /* ESERCIZIO 9
      Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
     */
 
-    const makeItClickable = function () { }
+    const makeItClickable = function () {
+      //Seleziono il titolo "h1"
+      const h1 = document.querySelector("h1")
 
+      //Metodo nel quale viene eseguita una funzione dopo che l'utente esegue l'azione di "onlick"
+      h1.onclick = function () {
+
+        //Rimuove definitivamente la lista
+        h1.innerText = h1.innerText.slice(0, -1)
+      }
+    }
+    makeItClickable()
     /* ESERCIZIO 10
      Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
     */
