@@ -203,13 +203,14 @@
     */
 
     const makeItClickable = function () {
+
       //Seleziono il titolo "h1"
       const h1 = document.querySelector("h1")
 
       //Metodo nel quale viene eseguita una funzione dopo che l'utente esegue l'azione di "onlick"
       h1.onclick = function () {
 
-        //Rimuove definitivamente la lista
+        //Rimuove l'ultima lettera del titolo
         h1.innerText = h1.innerText.slice(0, -1)
       }
     }
@@ -218,7 +219,21 @@
      Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
     */
 
-    const revealFooterLink = function () { }
+    const revealFooterLink = function () {
+
+      //Seleziono il "footer"
+      const footer = document.querySelector("footer");
+
+      //Metodo nel quale viene eseguita una funzione dopo che l'utente esegue l'azione di "onlick"
+      footer.onclick = function () {
+
+        //Seleziono il link contenuto nel footer
+        const linkFooter = document.querySelector("a");
+
+        //Mostro attraverso un alert l'URL contenuto nel link
+        alert(linkFooter.href);
+      }
+    }
 
     /* ESERCIZIO 11
      Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
