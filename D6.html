@@ -22,6 +22,10 @@
       padding: 1rem;
     }
 
+    th {
+      text-align: left;
+    }
+
     footer {
       padding: 1rem;
       background-color: black;
@@ -235,8 +239,73 @@
      La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
   */
 
-    const generateTable = function () { }
+    const generateTable = function () {
+      const table = document.createElement("table");
+      table.style.width = "100%"
 
+      //Creazione intestazione
+      const firstRow = document.createElement("tr");
+
+      const thImage = document.createElement("th");
+      thImage.innerText = "Immagine";
+
+      const thProdName = document.createElement("th");
+      thProdName.innerText = "Nome Prodotto";
+
+      const thQty = document.createElement("th");
+      thQty.innerText = "Quantità";
+
+      const thPrice = document.createElement("th");
+      thPrice.innerText = "Prezzo";
+
+      firstRow.append(thImage, thProdName, thQty, thPrice);
+
+      //Creazione dati interni
+
+      //Seconda Riga
+      const secondRow = document.createElement("tr");
+
+      const tdImage2 = document.createElement("td");
+      const tdImg2 = document.createElement("img");
+      tdImg2.src = "https://images.unsplash.com/photo-1722081797643-7240902c46d2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D";
+      tdImg2.style.width = "300px"
+      tdImage2.appendChild(tdImg2);
+
+      const tdProdName2 = document.createElement("td");
+      tdProdName2.innerText = "Prodotto 1";
+      const tdQty2 = document.createElement("td");
+      tdQty2.innerText = 10;
+      const tdPrice2 = document.createElement("td");
+      tdPrice2.innerText = 50;
+
+      secondRow.append(tdImage2, tdProdName2, tdQty2, tdPrice2);
+
+      //Terza riga
+      const thirdRow = document.createElement("tr");
+
+      const tdImage3 = document.createElement("td");
+      const tdImg3 = document.createElement("img");
+      tdImg3.src = "https://images.unsplash.com/photo-1722232778560-a56742074a31?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8fA%3D%3D";
+      tdImg3.style.width = "300px"
+      tdImage3.appendChild(tdImg3);
+
+      const tdProdName3 = document.createElement("td");
+      tdProdName3.innerText = "Prodotto 1";
+      const tdQty3 = document.createElement("td");
+      tdQty3.innerText = 10;
+      const tdPrice3 = document.createElement("td");
+      tdPrice3.innerText = 50;
+
+      thirdRow.append(tdImage3, tdProdName3, tdQty3, tdPrice3);
+
+      //Collegamento righe alla tabella
+      table.append(firstRow, secondRow, thirdRow);
+
+      //Inserimento tabella prima del footer
+      const footer = document.querySelector("footer");
+      document.body.insertBefore(table, footer);
+    }
+    generateTable();
     /* ESERCIZIO 12
      Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
   */
